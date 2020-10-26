@@ -6,7 +6,7 @@ function GameOptions(props: any) {
   const {n, setN, setGame, setAlert} = props;
 
   return (
-      <Paper style={{width: 400}}>
+      <Paper style={{paddingRight: 15, paddingLeft: 15}}>
         <Grid container spacing={3} alignItems="baseline" justify="center">
           <Grid item>
             <Typography variant="body1">
