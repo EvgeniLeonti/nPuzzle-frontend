@@ -14,7 +14,7 @@ const handleError = (error: any, location: any, setAlert: any) => {
     setAlert({severity: 'error', content: `server error`});
 };
 
-const clearSourceDestinationTiles = (setGame: any, currentGame: IGame, source: ICoordinates, destination: ICoordinates) => {
+const clearSourceTile = (setGame: any, currentGame: IGame, source: ICoordinates, destination: ICoordinates) => {
     setGame((currentGame: IGame) => {
         const board = currentGame.board;
 
@@ -26,7 +26,6 @@ const clearSourceDestinationTiles = (setGame: any, currentGame: IGame, source: I
 
         try {
             board[source.y][source.x] = null;
-            board[destination.y][destination.x] = null;
         }
         catch (e) {
             console.warn('failed to clear tile values', { source, destination });
@@ -39,6 +38,7 @@ const clearSourceDestinationTiles = (setGame: any, currentGame: IGame, source: I
 const GameController = {
     createNewGame: (n: number, setGame: any, setAlert: any): void => {
         (async () => {
+            setAlert({severity: 'info', content: config.LOADING_MESSAGE});
             setGame(await GameAPI.init(n));
             setAlert({severity: 'success', content: config.WELCOME_MESSAGE});
         })().catch(error => {
@@ -57,7 +57,7 @@ const GameController = {
             setAlert({severity: 'info', content: config.LOADING_MESSAGE});
             setLoading(true);
 
-            clearSourceDestinationTiles(setGame, game, source, destination);
+            clearSourceTile(setGame, game, source, destination);
 
             const updatedGame = await GameAPI.play(game.id, source, destination);
             setGame(updatedGame);
