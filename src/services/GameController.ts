@@ -45,7 +45,7 @@ const GameController = {
             handleError(error, 'GameController::createNewGame', setAlert);
         })
     },
-    onTileDrag: (draggedTile: {source: ICoordinates | null, destination: ICoordinates | null}, game: IGame, setGame: any, setLoading: any, setAlert: any, setDialog: any): void => {
+    onTileDrag: (draggedTile: {source: ICoordinates | null, destination: ICoordinates | null}, game: IGame, setGame: any, setLoading: any, setAlert: any, setDialog: any, setUpdatedAt: any): void => {
         const prevGameState = JSON.parse(JSON.stringify(game));
         const {source, destination} = draggedTile;
 
@@ -56,12 +56,10 @@ const GameController = {
         (async () => {
             setAlert({severity: 'info', content: config.LOADING_MESSAGE});
             setLoading(true);
-
             clearSourceTile(setGame, game, source, destination);
-
             const updatedGame = await GameAPI.play(game.id, source, destination);
             setGame(updatedGame);
-
+            setUpdatedAt((new Date()).valueOf());
             setLoading(false);
             setAlert({severity: 'success', content: config.WELCOME_MESSAGE});
 
@@ -70,6 +68,7 @@ const GameController = {
             }
         })().catch(error => {
             setGame(prevGameState);
+            setUpdatedAt((new Date()).valueOf());
             setLoading(false);
             handleError(error, 'GameController::onTileDrag', setAlert);
         })

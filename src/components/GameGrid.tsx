@@ -30,12 +30,13 @@ const useStyles = makeStyles({
 });
 
 function GameGrid(props: any) {
-  const {n, loading, setLoading, game, setGame, setAlert, setDialog} = props;
+  const {n, setLoading, game, setGame, setAlert, setDialog} = props;
   const [draggedTile, setDraggedTile] = useState<{source: ICoordinates | null, destination: ICoordinates | null}>({source: null, destination: null});
+  const [updatedAt, setUpdatedAt] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const classes = useStyles();
 
-  useEffect(() => GameController.onTileDrag(draggedTile, game, setGame, setLoading, setAlert, setDialog), [draggedTile]);
+  useEffect(() => GameController.onTileDrag(draggedTile, game, setGame, setLoading, setAlert, setDialog, setUpdatedAt), [draggedTile]);
 
   if (!game || !game.board) {
     return <></>
@@ -45,10 +46,10 @@ function GameGrid(props: any) {
       <Grid container alignItems="center" justify="center">
         <Grid item xs={11} md={8} lg={12} xl={4} >
           <Paper className={classes.gridContainer}>
-            <Grid container spacing={3} ref={ref} key={loading} alignItems="center" justify="center">
+            <Grid container spacing={3} ref={ref} key={updatedAt} alignItems="center" justify="center">
               {game.board.map((row: number[][], x: number) => (
                   row.map((val, y: number) =>
-                      <GameGridItem loading={loading} x={x} y={y} parentRef={ref} key={`${x}_${y}`} n={n} draggedTile={draggedTile} setDraggedTile={setDraggedTile}>
+                      <GameGridItem x={x} y={y} parentRef={ref} key={`${x}_${y}`} n={n} draggedTile={draggedTile} setDraggedTile={setDraggedTile}>
                         <Paper square className={val ? classes.gridItem : classes.gridItemNull}>{val ? val : 0}</Paper>
                       </GameGridItem>
                   )

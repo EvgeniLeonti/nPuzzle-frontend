@@ -24,7 +24,7 @@ const getXYCoordinates = (event: any, parentRect: any, n: number): ICoordinates 
 
 function GameGridItem(props: any) {
     const nodeRef = React.useRef(null);
-    const {parentRef, n, setDraggedTile, draggedTile, loading} = props;
+    const {parentRef, n, setDraggedTile, draggedTile} = props;
     const width = 12 / Math.sqrt(n + 1) as GridSize;
 
     return <Draggable
