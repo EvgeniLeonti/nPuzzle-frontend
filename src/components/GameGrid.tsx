@@ -9,22 +9,22 @@ const useStyles = makeStyles({
   gridContainer: {
     position: 'relative',
     overflow: 'auto',
-    padding: '0'
+    padding: 20,
+    background: 'white',
   },
   gridItem: {
-    lineHeight: 2, padding: 5,
+    lineHeight: 2.5, paddingTop: 10, paddingBottom: 10,
     color: 'black',
     '&:hover': {
-      background: "#a0a0a0",
-      color: "white"
+      background: "#d4d4d4",
     },
   },
   gridItemNull: {
-    lineHeight: 2, padding: 5,
+    lineHeight: 2.5, paddingTop: 10, paddingBottom: 10,
     color: 'white',
     '&:hover': {
-      background: "#a0a0a0",
-      color: "#a0a0a0"
+      background: "#d4d4d4",
+      color: "#d4d4d4"
     },
   }
 });
@@ -43,16 +43,18 @@ function GameGrid(props: any) {
 
   return (
       <Grid container alignItems="center" justify="center">
-        <Grid item xs={11} md={8} lg={12} xl={4} className={classes.gridContainer}>
-          <Grid container ref={ref} key={loading} alignItems="center" justify="center">
-            {game.board.map((row: number[][], x: number) => (
-                row.map((val, y: number) =>
-                    <GameGridItem loading={loading} x={x} y={y} parentRef={ref} key={`${x}_${y}`} n={n} draggedTile={draggedTile} setDraggedTile={setDraggedTile}>
-                      <Paper square className={val ? classes.gridItem : classes.gridItemNull}>{val ? val : 0}</Paper>
-                    </GameGridItem>
-                )
-            ))}
-          </Grid>
+        <Grid item xs={11} md={8} lg={12} xl={4} >
+          <Paper className={classes.gridContainer}>
+            <Grid container spacing={3} ref={ref} key={loading} alignItems="center" justify="center">
+              {game.board.map((row: number[][], x: number) => (
+                  row.map((val, y: number) =>
+                      <GameGridItem loading={loading} x={x} y={y} parentRef={ref} key={`${x}_${y}`} n={n} draggedTile={draggedTile} setDraggedTile={setDraggedTile}>
+                        <Paper square className={val ? classes.gridItem : classes.gridItemNull}>{val ? val : 0}</Paper>
+                      </GameGridItem>
+                  )
+              ))}
+            </Grid>
+          </Paper>
         </Grid>
       </Grid>
   );

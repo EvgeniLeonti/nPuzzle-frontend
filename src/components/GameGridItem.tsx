@@ -4,7 +4,18 @@ import {Grid, GridSize} from "@material-ui/core";
 import {ICoordinates} from "../interfaces/ICoordinates";
 
 const getXYCoordinates = (event: any, parentRect: any, n: number): ICoordinates => {
-    const {clientX, clientY} = event;
+    const {type} = event;
+    let {clientX, clientY} = event;
+
+    if (type === "touchstart") {
+        clientX = event.touches[0].clientX;
+        clientY = event.touches[0].clientY;
+    }
+    else if (type === "touchend") {
+        clientX = event.changedTouches[0].clientX;
+        clientY = event.changedTouches[0].clientY;
+    }
+
     const tileWidth = parentRect.width / Math.sqrt(n + 1);
     const tileHeight = parentRect.height / Math.sqrt(n + 1);
     const offsets = { x: clientX - parentRect.x, y: clientY - parentRect.y};
@@ -17,7 +28,6 @@ function GameGridItem(props: any) {
     const width = 12 / Math.sqrt(n + 1) as GridSize;
 
     return <Draggable
-        disabled={loading}
         nodeRef={nodeRef}
         bounds="parent"
         axis="both"
@@ -35,7 +45,7 @@ function GameGridItem(props: any) {
             setDraggedTile(Object.assign({}, draggedTile, {destination}));
         }}
     >
-        <Grid ref={nodeRef} item xs={width} className="handle" style={{minWidth: 40}}>
+        <Grid ref={nodeRef} item xs={width} className="handle" style={{minWidth: 60}}>
             {props.children}
         </Grid>
     </Draggable>

@@ -21,19 +21,20 @@ function App() {
 
   return (
     <div className="App">
-      <div className="AppContainer">
-        <header>
-          <Logo title={config.APP_NAME} />
-        </header>
-        <main>
-          <Grid container spacing={0} alignItems="baseline" justify="center">
-            <Grid item><br /><GameOptions n={n} setN={setN} setGame={setGame} setAlert={setAlert} /></Grid>
-            {game && game.board && <Grid item xs={12}><br /><br /><GameGrid n={n} loading={loading} setLoading={setLoading} game={game} setGame={setGame} setAlert={setAlert} setDialog={setDialog}/></Grid>}
-          </Grid>
-          {alert && alert.severity && alert.content && <Alert setAlert={setAlert} alert={alert} />}
-          {dialog && dialog.title && dialog.content && <Dialog setDialog={setDialog} dialog={dialog} />}
-        </main>
-
+      <div className="AppFullHeight">
+        <div className="AppContent">
+          <header>
+            <Logo title={config.APP_NAME} />
+          </header>
+          <main>
+            <Grid container spacing={0} alignItems="baseline" justify="center">
+              <Grid item><br /><GameOptions n={n} setN={setN} setGame={setGame} setAlert={setAlert} /></Grid>
+              {game && game.board && <Grid item xs={12}><br /><br /><GameGrid n={n} loading={loading} setLoading={setLoading} game={game} setGame={setGame} setAlert={setAlert} setDialog={setDialog}/></Grid>}
+            </Grid>
+          </main>
+        </div>
+        {alert && alert.severity && alert.content && <Alert setAlert={setAlert} alert={alert} />}
+        {dialog && dialog.title && dialog.content && <Dialog setDialog={setDialog} dialog={dialog} />}
       </div>
 
     </div>
