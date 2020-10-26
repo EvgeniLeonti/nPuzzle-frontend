@@ -11,7 +11,7 @@ const handleError = (error: any, location: any, setAlert: any) => {
         setAlert({severity: 'warning', content: errorMessage});
         return;
     }
-    setAlert({severity: 'error', content: `Failed to execute move: server error`});
+    setAlert({severity: 'error', content: `server error`});
 };
 
 const clearSourceDestinationTiles = (setGame: any, currentGame: IGame, source: ICoordinates, destination: ICoordinates) => {
