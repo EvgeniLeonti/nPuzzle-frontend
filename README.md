@@ -1,5 +1,8 @@
 # nPuzzle frontend
 
+## Demo
+Check it out at https://npuzzle.vercel.app
+
 ## Quick Start
 
 ### Client
