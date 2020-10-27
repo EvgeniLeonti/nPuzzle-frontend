@@ -8,8 +8,7 @@ Check it out at https://npuzzle.vercel.app
 ### Client
 Clone this repository and follow the next steps:
 1. run `npm install`
-2. run `npm run-script build`
-3. run `npm start`
+2. run `npm start`
 
 You should be able to access the client at: http://localhost:3000
 
