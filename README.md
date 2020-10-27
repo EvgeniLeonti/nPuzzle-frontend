@@ -1,4 +1,4 @@
-# nPuzzle backend
+# nPuzzle frontend
 
 ## Quick Start
 Clone this repository and follow the next steps:
