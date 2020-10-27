@@ -31,7 +31,7 @@ function App() {
               <Grid item><br /><GameOptions n={n} setN={setN} setGame={setGame} setAlert={setAlert} /></Grid>
               {game && game.board && <Grid item xs={12}><br /><br /><GameGrid n={n} loading={loading} setLoading={setLoading} game={game} setGame={setGame} setAlert={setAlert} setDialog={setDialog}/></Grid>}
               <Grid item xs={12}>
-                <Typography variant="body1" style={{marginTop: 20}}>Created by <a style={{color: 'white'}} href="mailto:evgeni.leonti@gmail.com">Evgeni Leonti</a></Typography>
+                <br /><br /><Typography variant="body1">Created by <a style={{color: 'white'}} href="mailto:evgeni.leonti@gmail.com">Evgeni Leonti</a></Typography>
               </Grid>
             </Grid>
 
