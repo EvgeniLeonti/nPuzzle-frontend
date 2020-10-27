@@ -41,7 +41,7 @@ function GameGrid(props: any) {
 
   return (
       <Grid container alignItems="center" justify="center">
-        <Grid item xs={11} md={8} lg={12} xl={4} >
+        <Grid item xs={11} md={8} lg={6} xl={4} >
           <Paper className={classes.gridContainer}>
             <Grid container spacing={3} ref={ref} key={updatedAt} alignItems="center" justify="center">
               {game.board.map((row: number[][], x: number) => (
