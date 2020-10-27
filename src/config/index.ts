@@ -1,5 +1,5 @@
 export default {
-    API_ENDPOINT: process.env.API_ENDPOINT || 'http://localhost:8081/api/v1',
+    API_ENDPOINT: 'https://npuzzle-backend.herokuapp.com/api/v1',
     DEFAULT_N: 15,
     APP_NAME: `N-Puzzle`,
     WELCOME_MESSAGE: `Drag and drop the tiles!`,
