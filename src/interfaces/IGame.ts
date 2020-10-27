@@ -1,5 +1,5 @@
 export interface Board {
-    [index:number]: (number|null)[]
+    [index: number]: (number | null)[]
 }
 
 export interface IGame {

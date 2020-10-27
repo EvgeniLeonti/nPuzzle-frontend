@@ -20,15 +20,14 @@ const clearSourceTile = (setGame: any, currentGame: IGame, source: ICoordinates,
 
         const coordinates: number[] = Object.values(source || {}).concat(Object.values(destination || {}));
         if (coordinates.filter(num => num < 0).length > 0) {
-            console.warn('wrong source or destination', { source, destination });
+            console.warn('wrong source or destination', {source, destination});
             return;
         }
 
         try {
             board[source.y][source.x] = null;
-        }
-        catch (e) {
-            console.warn('failed to clear tile values', { source, destination });
+        } catch (e) {
+            console.warn('failed to clear tile values', {source, destination});
         }
 
         return currentGame;
@@ -45,7 +44,7 @@ const GameController = {
             handleError(error, 'GameController::createNewGame', setAlert);
         })
     },
-    onTileDrag: (draggedTile: {source: ICoordinates | null, destination: ICoordinates | null}, game: IGame, setGame: any, setLoading: any, setAlert: any, setDialog: any, setUpdatedAt: any): void => {
+    onTileDrag: (draggedTile: { source: ICoordinates | null, destination: ICoordinates | null }, game: IGame, setGame: any, setLoading: any, setAlert: any, setDialog: any, setUpdatedAt: any): void => {
         const prevGameState = JSON.parse(JSON.stringify(game));
         const {source, destination} = draggedTile;
 

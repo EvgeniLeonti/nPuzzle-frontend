@@ -10,16 +10,15 @@ const getXYCoordinates = (event: any, parentRect: any, n: number): ICoordinates 
     if (type === "touchstart") {
         clientX = event.touches[0].clientX;
         clientY = event.touches[0].clientY;
-    }
-    else if (type === "touchend") {
+    } else if (type === "touchend") {
         clientX = event.changedTouches[0].clientX;
         clientY = event.changedTouches[0].clientY;
     }
 
     const tileWidth = parentRect.width / Math.sqrt(n + 1);
     const tileHeight = parentRect.height / Math.sqrt(n + 1);
-    const offsets = { x: clientX - parentRect.x, y: clientY - parentRect.y};
-    return { x: Math.floor(offsets.x / tileWidth),  y: Math.floor(offsets.y / tileHeight) };
+    const offsets = {x: clientX - parentRect.x, y: clientY - parentRect.y};
+    return {x: Math.floor(offsets.x / tileWidth), y: Math.floor(offsets.y / tileHeight)};
 }
 
 function GameGridItem(props: any) {
