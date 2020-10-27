@@ -53,6 +53,18 @@ const GameController = {
             return;
         }
 
+        if (source.x === destination.x && source.y === destination.y) {
+            setGame(prevGameState);
+            setUpdatedAt((new Date()).valueOf());
+            return;
+        }
+
+        if (Object.values(source).concat(Object.values(destination)).find(i => i < 0)) {
+            setGame(prevGameState);
+            setUpdatedAt((new Date()).valueOf());
+            return;
+        }
+
         (async () => {
             setAlert({severity: 'info', content: config.LOADING_MESSAGE});
             setLoading(true);
