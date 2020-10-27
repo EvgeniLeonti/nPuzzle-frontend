@@ -21,11 +21,8 @@ const useStyles = makeStyles({
   },
   gridItemNull: {
     lineHeight: 2.5, paddingTop: 10, paddingBottom: 10,
-    color: 'white',
-    '&:hover': {
-      background: "#d4d4d4",
-      color: "#d4d4d4"
-    },
+    color: '#282c34',
+    background: "#282c34"
   }
 });
 
